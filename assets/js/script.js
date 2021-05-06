@@ -27,6 +27,7 @@ var play=true;
 var endg=false;
 var lbpg=false;
 var automate=[true,false];
+var speed=15;
 
 var img=new Image();
 img.src="assets/sprite-sheet/ss.png";
@@ -250,8 +251,19 @@ function move() {
     if(automate[0]) {
         ball.clearRect(0, 0, canvas.width, canvas.height);
         var inp=prompt("Enter \'M\' to play Manually\nEnter \'A\' to Automate the Game");
-        if(inp==="A")
+        if(inp==="A"){
             automate[1]=true;
+            speed=15;
+        }
+        if(inp==="M") {
+            var sp=prompt("Select Difficulty : \n\'F\' for Fast\n\'M\' for Medium\n\'S\' for Slow");
+            switch(sp) {
+                case "S":speed=5;break;
+                case "M":speed=10;break;
+                case "F":speed=15;break;
+                default:speed=15;
+            }
+        }
         automate[0]=false;
     }
     if(x+dx-10<=0)
@@ -274,13 +286,13 @@ function move() {
     }
     if(endg)
         end("ENDED");
-    dy=up?dy-15:dy+15;
-    dx=right?dx+15:dx-15;
+    dy=up?dy-speed:dy+speed;
+    dx=right?dx+speed:dx-speed;
     posx=x+dx;posy=y+dy;
     if(leftarrow&&px>0)
-        px-=5;
+        px-=10;
     if(rightarrow&&px+120<canvas.width)
-        px+=5;
+        px+=10;
     if(play)
         requestAnimationFrame(move);
 }
