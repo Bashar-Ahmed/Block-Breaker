@@ -28,7 +28,7 @@ function generator() {
     for(i=0;stx+100<canvas.width;stx+=110,i++) {
         sty=20;
         bricks[i]=[];
-        for(j=0;sty<6*canvas.height/10;sty+=40,j++) {
+        for(j=0;sty<4*canvas.height/10;sty+=40,j++) {
             var n=Math.floor((Math.random()*5));
             bricks[i][j]=[stx,sty,n];
         }
@@ -215,15 +215,18 @@ function move() {
     if(automate[0]) {
         ball.clearRect(0, 0, canvas.width, canvas.height);
         var inp=prompt("Enter \'M\' to play Manually\nEnter \'A\' to Automate the Game");
-        if(inp==="A"){
+        if(inp==="A"||inp==="a"){
             automate[1]=true;
             speed=15;
         }
-        if(inp==="M") {
+        if(inp==="M"||inp==="m") {
             var sp=prompt("Select Difficulty : \n\'F\' for Fast\n\'M\' for Medium\n\'S\' for Slow");
             switch(sp) {
+                case "s":
                 case "S":speed=5;break;
+                case "m":
                 case "M":speed=10;break;
+                case "f":
                 case "F":speed=15;break;
                 default:speed=15;
             }
@@ -254,9 +257,9 @@ function move() {
     dx=right?dx+speed:dx-speed;
     posx=x+dx;posy=y+dy;
     if(leftarrow&&px>0)
-        px-=10;
+        px-=15;
     if(rightarrow&&px+120<canvas.width)
-        px+=10;
+        px+=15;
     if(play)
         requestAnimationFrame(move);
 }
