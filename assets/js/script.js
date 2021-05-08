@@ -1,5 +1,3 @@
-var img=new Image();
-img.src="assets/sprite-sheet/ss.png";
 var netf=new sound("assets/sounds/Netflix.mp3");
 var hitp=new sound("assets/sounds/hit.wav");
 

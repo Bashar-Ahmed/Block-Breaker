@@ -50,7 +50,7 @@ canvas.addEventListener("mousemove",function(event){
         tool.font = "60px Arial";
         tool.fillText("Play Again",860+shift,320);
     }
-    else{
+    else if(lbpg){
         var shift=100;
         tool.clearRect(900,100,200,200);
         tool.fillStyle = 'chartreuse';
